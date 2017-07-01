@@ -24,7 +24,16 @@ void display (vector<int> a , int n )
 	cout << "\n";
 	
 }
-
+void display (int a[] ,int i, int n )
+{
+	cout << "\n";
+	for(int h = i ; h < n ; h ++)
+	{
+		cout<<a[h]<<" ";
+	}
+	cout << "\n";
+	
+}
 void bub_sort(vector<int> a , int n)
 {
 	
@@ -183,6 +192,94 @@ void heap_sort (vector<int > a , int n )
 	cout <<"Heap Sort : ";display(a,n);
 }
 
+void merge(int a[] , int start , int mid , int end  )
+{
+	
+	int s1 = start ;
+	int s2 = mid+1 ;
+	int e1 = mid ;
+	int e2 = end ;
+	int i  = 0;
+	int sorted[20];
+
+	while(s1<=e1&&s2<=e2)
+	{
+		if(a[s1]<a[s2])
+		{
+			sorted[i++]=a[s1++];
+		}
+		else 
+		{
+			sorted[i++]=a[s2++];
+		}
+		
+	}
+	cout<<"\nS1 , E1 "<<s1<<" "<<e1<<"\t";
+	while(s1<=e1)
+	{
+		sorted[i++]=a[s1++];
+		
+	}
+
+	while(s2<=e2)
+	{
+		sorted[i++]=a[s2++];
+	}
+	
+	for(int h = 0 ; h <i ; h ++)
+	{
+		a[start++]= sorted[h];
+	}
+
+	display(sorted,0,i);
+}
+void merge_sort(int a[], int start , int end )
+{
+	if(start<end)
+	{
+		
+		int mid = (start + end )/2;
+		
+
+		merge_sort(a , start , mid );
+		merge_sort(a , mid +1 , end);
+		merge(a , start , mid , end);
+				
+	}
+
+}
+
+
+
+void pigeon_hole_sort( int a[] , int num,int min , int max )
+{
+	
+	int range = max - min +1 ;
+
+	int holes [range]= {0};
+
+	
+	for(int h = 0 ; h < num ; h ++)
+	{
+		holes[a[h]-min]++;
+	}
+	
+	int index1,j;
+	
+		for(j = 0, index1 = 0 ; j < index1<num&&range ; j ++)
+		while(holes[j]!=0)
+		{
+			
+			a[index1]= j + min;
+			  index1++;
+			holes[j]--;
+			
+		}
+	
+	//display(a,0,max);
+	
+}
+
 
 
 int main ()
@@ -191,10 +288,17 @@ int main ()
 	int num,i ; 
 	cout <<"Enter The Total Number Of Digits : \n";
 	cin >> num ;
-	vector <int>a (num);
+	//vector <int>a (num);
+	int a[num]; 
+	int min = INT_MAX;
+	int max = INT_MIN;
 	for(i = 0  ; i < num ; i ++)
 	{
 		cin>>a[i];
+		if(a[i]<min)
+				min = a[i];
+		if(a[i]>max)
+				max = a[i];
 	}
 	cout<<"\nYou Entered : ";
 	for(i = 0 ; i < num ; i ++)
@@ -206,9 +310,18 @@ int main ()
 //insertion_sort(a,num);
 //comb_sort(a,num);
 //counting_sort();
-heap_sort(a,num);		
+//heap_sort(a,num);		
+
+//merge_sort ( a ,0, num-1 );
+//	cout<<"Merge Sort :";
+//display(a,0,num);
+
+pigeon_hole_sort(a , num ,min ,max);
+
+
 	return 0 ; 
 	
 	
 }
+
 
