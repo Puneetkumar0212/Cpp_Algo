@@ -67,7 +67,20 @@ void bub_sort(vector<int> a , int n)
 	
 }
 
+void selection_sort(int a[] , int n)
+{
 
+	for(int i = 0 ; i < n ; i ++)
+		for(int j = i +1 ; j < n ; j ++)
+			if(a[i]>a[j])
+			{
+				int temp = a[i];
+				a[i]= a[j];
+				a[j]= temp ; 
+			}
+
+display(a,0,n);
+}
 void insertion_sort (vector< int> a , int n )
 {
 	
@@ -302,7 +315,7 @@ int partition(int a[] , int l , int h )
 
 	}
 		int b = i+1 ,c=h;
-				if((i+1)!=h)
+				
 				{
 					a[b] = a[b]+a[c];
 					a[c] = a[b] - a[c];
@@ -326,7 +339,49 @@ void quick_sort(int a[] , int s , int e )
 		
 	}
 }
+struct row 
+{
+	int count;
+	int ele[20];
+};
 
+void radix_sort(int a[] , int n, int max)
+{
+    int tmp;
+	row bucket[10];
+	int divisor = 1;
+	for(int g = 0 ; g < 10 ; g ++)
+	{
+		bucket[g].count=0;
+	}
+	while(max)
+	{
+		max--;
+		for(int i = 0 ; i < n ; i ++)
+		{
+			tmp = a[i]/divisor;
+			int c = bucket[tmp%10].count;
+			bucket[tmp%10].ele[c]=a[i];
+			bucket[tmp%10].count++;
+		}
+		
+		int index = 0 ;
+		for(int g = 0 ; g < 10 ; g ++)
+		{
+			int c = bucket[g].count;
+			for(int aux=0;aux<c;aux++)
+			    a[index++]= bucket[g].ele[aux];	    
+			
+			cout << endl;
+			bucket[g].count = 0;
+		}
+				
+		divisor=divisor*10;
+	}
+
+
+	display(a,0,num);
+}
 
 int main ()
 {
@@ -336,8 +391,8 @@ int main ()
 	cin >> num ;
 	//vector <int>a (num);
 	int a[num]; 
-	int min = INT_MAX;
-	int max = INT_MIN;
+	 int max = 0;
+	 int min = 99999;
 	for(i = 0  ; i < num ; i ++)
 	{
 		cin>>a[i];
@@ -353,6 +408,7 @@ int main ()
 	}
 	
 		//	bub_sort(a,num);
+		//selection_sort(a,num);
 		//insertion_sort(a,num);
 		//comb_sort(a,num);
 		//counting_sort();
@@ -363,8 +419,19 @@ int main ()
 		//display(a,0,num);
 		
 		//pigeon_hole_sort(a , num ,min ,max);
-			quick_sort(a,0,num-1);
-			display(a,0,num);
+		// quick_sort(a,0,num-1);
+		// display(a,0,num);
+
+	// int m = 0 ;
+	// while(max>0 )
+	// {
+	//   m ++;
+	//   max = max/10;
+	// }
+	
+	// radix_sort(a,num,m);
+
+
 
 	return 0 ; 
 	
