@@ -382,7 +382,37 @@ void radix_sort(int a[] , int n, int max)
 
 	display(a,0,num);
 }
+void shell_sort(int a[] , int n)
+{
+	int right ;
 
+
+	
+	for(int gap = num/2 ; gap >0 ; gap=gap/2 )
+	{
+		for(int i = gap ; i < n ; i ++)
+		{
+			int var = a[i];
+			for(right = i ; right>=gap;)
+			{
+				
+				if(a[right-gap]>var)
+				{
+					a[right]= a[right-gap];
+					right = right-gap ;
+					
+				}
+				else break ;
+
+	
+			}
+			a[right]= var ;
+			
+			
+		}
+	}
+	display(a,0,num);
+}
 int main ()
 {
 
@@ -431,7 +461,7 @@ int main ()
 	
 	// radix_sort(a,num,m);
 
-
+	shell_sort(a,num);
 
 	return 0 ; 
 	
