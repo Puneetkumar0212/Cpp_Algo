@@ -256,6 +256,7 @@ void pigeon_hole_sort( int a[] , int num,int min , int max )
 	
 	int range = max - min +1 ;
 
+
 	int holes [range]= {0};
 
 	
@@ -266,17 +267,17 @@ void pigeon_hole_sort( int a[] , int num,int min , int max )
 	
 	int index1,j;
 	
-		for(j = 0, index1 = 0 ; j < index1<num&&range ; j ++)
+		for(j = 0, index1 = 0 ; j <range &&index1<num; j ++)
 		while(holes[j]!=0)
 		{
 			
 			a[index1]= j + min;
-			  index1++;
+			index1++;
 			holes[j]--;
 			
 		}
 	
-	//display(a,0,max);
+	display(a,0,num);
 	
 }
 
