@@ -3,7 +3,7 @@
 #include<string>
 using namespace std ;
 
-
+int num ;
 
 void swap ( vector <int> a , int b , int c )
 {
@@ -280,13 +280,58 @@ void pigeon_hole_sort( int a[] , int num,int min , int max )
 	display(a,0,num);
 	
 }
+int partition(int a[] , int l , int h )
+{
+	int pivot = a[h];
+	int i = l- 1,j;
+		
+	for(j = l ; j <h ; j ++ )
+	{
+		if(a[j]<=pivot)
+		{
+			i++;
+				int b = i ,c=j;
+				
+					a[b] = a[b]+a[c];
+					a[c] = a[b] - a[c];
+					a[b] = a[b] - a[c];
+				
+	
+		}
+			
 
+	}
+		int b = i+1 ,c=h;
+				if((i+1)!=h)
+				{
+					a[b] = a[b]+a[c];
+					a[c] = a[b] - a[c];
+					a[b] = a[b] - a[c];
+				}
+		
+		
+	return (i+1);
+}
+
+void quick_sort(int a[] , int s , int e )
+{
+	if(s<e)
+	{
+//		cout<<"\nS  :"<<s<<" E: "<<e;
+		int i = partition(a,s,e);
+	
+		quick_sort(a,s,i-1);
+		quick_sort(a,i+1,e);
+		
+		
+	}
+}
 
 
 int main ()
 {
 
-	int num,i ; 
+	int i ; 
 	cout <<"Enter The Total Number Of Digits : \n";
 	cin >> num ;
 	//vector <int>a (num);
@@ -307,18 +352,19 @@ int main ()
 		cout<<a[i]<<" ";
 	}
 	
-//	bub_sort(a,num);
-//insertion_sort(a,num);
-//comb_sort(a,num);
-//counting_sort();
-//heap_sort(a,num);		
-
-//merge_sort ( a ,0, num-1 );
-//	cout<<"Merge Sort :";
-//display(a,0,num);
-
-pigeon_hole_sort(a , num ,min ,max);
-
+		//	bub_sort(a,num);
+		//insertion_sort(a,num);
+		//comb_sort(a,num);
+		//counting_sort();
+		//heap_sort(a,num);		
+		
+		//merge_sort ( a ,0, num-1 );
+		//	cout<<"Merge Sort :";
+		//display(a,0,num);
+		
+		//pigeon_hole_sort(a , num ,min ,max);
+			quick_sort(a,0,num-1);
+			display(a,0,num);
 
 	return 0 ; 
 	
