@@ -15,6 +15,7 @@ int reset (int a[] , int size , int n)
 		a[i]=product%10;
 		carry = product/10;
 	}
+	
 	while(carry)
 	{
 		a[size] =  carry%10;
