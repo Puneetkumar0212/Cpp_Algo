@@ -130,4 +130,27 @@ int main()
 		cout<<a[i].arrival_hr<<":" <<a[i].arrival_min<<" "<<a[i].departure_hr<<":"<<a[i].departure_min<<"\n";
 
 	}
+
+	int trains=0;
+	int current_hr=a[0].departure_hr;
+	int current_min = a[0].departure_min;
+	
+	for(int j = 1 ; j < n ; j ++)
+	{
+		if(current_hr>a[j].arrival_hr)
+		{
+			trains++;
+		}
+		else if (current_hr==a[j].arrival_hr)
+		{
+			if(current_min>a[j].arrival_min)
+				trains++;
+		}
+		current_hr = a[j].departure_hr;
+		current_min = a[j].departure_min;
+	}
+
+
+cout<<"\n Trains Req "<<trains;
+
 }
