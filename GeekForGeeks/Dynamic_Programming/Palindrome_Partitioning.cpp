@@ -8,16 +8,20 @@ int pp(string s )
 {
 	int n = s.length();
 	int temp[n];
-	bool is_pal[n][n];
+	bool is_pal[n][n]={{false}};
+	for(int i = 0 ; i < n ; i ++)
+		is_pal[0][i]=false;
 
 	for(int i = 0 ; i < n ; i ++)
 	{
 		is_pal[i][i]=true;
 	}
 
+	cout<<"\n";
+
 	for(int length = 2 ; length<=n ; length++)
 	{
-		for (int i = 0; i < n-length+1; ++i)
+		for (int i = 0; i < n-length+1; i++)
 		{
 			int j = i+length-1;
 			if(length==2)
@@ -46,29 +50,6 @@ int pp(string s )
             }
 		}
 	}
-cout<<"\n";
-  
-for(int i = 0 ; i < n ; i ++)
-	cout<<temp[i]<<"\t";
-
-cout<<"\n";
-for(int i = 0 ; i < n ; i ++)
-{
-	cout<<"\n";
-	for (int j = 0; j <n; ++j)
-	{
-		if(is_pal[i][j]==true)
-		cout<<"true"<<"\t";
-		else if(is_pal[i][j]==false)
-			cout<<"false"<<"\t";
-		else
-			cout<<"NULL"<<"\t";
-
-	}
-}
-	cout<<"\n";
-cout<<"\n";
-cout<<"\n";
 
   return temp[n-1];
 }
