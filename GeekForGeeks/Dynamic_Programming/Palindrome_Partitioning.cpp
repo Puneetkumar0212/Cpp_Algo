@@ -10,12 +10,12 @@ int pp(string s )
 	int temp[n];
 	bool is_pal[n][n];
 
-	for(int i = 1 ; i < n ; i ++)
+	for(int i = 0 ; i < n ; i ++)
 	{
 		is_pal[i][i]=true;
 	}
 
-	for(int length = 2 ; length<n ; length++)
+	for(int length = 2 ; length<=n ; length++)
 	{
 		for (int i = 0; i < n-length+1; ++i)
 		{
@@ -46,6 +46,29 @@ int pp(string s )
             }
 		}
 	}
+cout<<"\n";
+  
+for(int i = 0 ; i < n ; i ++)
+	cout<<temp[i]<<"\t";
+
+cout<<"\n";
+for(int i = 0 ; i < n ; i ++)
+{
+	cout<<"\n";
+	for (int j = 0; j <n; ++j)
+	{
+		if(is_pal[i][j]==true)
+		cout<<"true"<<"\t";
+		else if(is_pal[i][j]==false)
+			cout<<"false"<<"\t";
+		else
+			cout<<"NULL"<<"\t";
+
+	}
+}
+	cout<<"\n";
+cout<<"\n";
+cout<<"\n";
 
   return temp[n-1];
 }
