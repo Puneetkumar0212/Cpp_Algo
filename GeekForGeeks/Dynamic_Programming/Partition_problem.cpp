@@ -1,11 +1,26 @@
 #include<iostream>
 using namespace std;
-bool pp(int a[] , int n,int sum)
+bool ssp(int a[] , int n,int sum)
 {
-	if(n==0||sum==0)
+	if(sum%2!=0||n==0||sum==0)
 		return false;
+	bool temp[n][sum+1],ans=false;
 
+	for(int i = 0 ; i< n ;i++)
+		temp[i][0]=true;
+	for(int h = 0 ; h <n ; h++)
+		for(int k = 1 ; k <=sum/2 ; k++)
+		{
+			if(a[h]<k)
+				temp[h][k]=temp[h-1][k];
+			else
+				temp[h][k]=temp[h-1][k-a[h]]||temp[h-1][k];
 
+		}
+		sum=sum/2;
+
+	ans = temp[n-1][sum];
+return ans;
 }
 
 int main()
@@ -17,9 +32,10 @@ int main()
 		{cin>>a[i];
 			sum+=a[i];
 		}
-		if(sum%2!=0)
-			return ;
+		
+		if(ssp(a,n,sum)==true)
+			cout<<"true";
 		else
-			cout<<pp(a,n,sum/2);
+			cout<<"false";
 	return 0;
 }
