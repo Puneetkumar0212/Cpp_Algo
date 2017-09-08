@@ -16,6 +16,43 @@ void display(node *head)
 		temp=temp->next;
 	}
 }
+
+bool findinnew(node *newlist , node *prev)
+{
+	int val = prev->value;
+	node *temp = newlist;
+	while(temp)
+	{
+		if(temp->value==val)
+			return 1;
+
+		temp=temp->next;
+	}
+return 0 ;
+}
+
+void insertinnew(node *newlist, node *prev,node *cur)
+{
+	node *p = NULL;
+	int val = prev->value;
+	p->value=val;
+	p->next=NULL;
+	node *temp = newlist;
+	while(temp)
+	{
+			cur = temp;
+			if(temp->next!=NULL&&temp->value<val&&temp->next->value>val)
+			{
+					node *right = temp->next;
+					temp->next = p;
+					p->next= right;
+			}
+
+			temp = temp->next;
+	}
+	
+}
+
 int main()
 {
 		int n ;
@@ -39,6 +76,32 @@ int main()
 				{ptr=p;head=p;}
 
 		}
+    	display(head);
+		
+		node *head2=NULL;
+		node *ptr2=NULL;
 
+		while(head)
+		{
+				if(head2==NULL)
+				{
+					head2->value=head->value;
+					head2->next=NULL;
+					ptr2=head2;
+				}
+				else
+				{
+					if(findinnew(head2,head)==0)
+					{
+						insertinnew(head2,head,ptr2);
+
+					}
+
+				}
+				head=head->next;
+		}
+
+
+display(head2);
 
 }
