@@ -83,20 +83,24 @@ int main()
 		node *start=head;
 		while(start)
 		{
-				if(head2==NULL)
-				{
-					head2->value=start->value;
-					head2->next=NULL;
-					ptr2=head2;
-				}
-				else
+				if(head2!=NULL)
 				{
 					if(findinnew(head2,head)==0)
 					{
 						insertinnew(head2,start,ptr2);
 
 					}
+				}
+				else
+				{
+					
+					node *f= new node();
+					f->value = start->value;
+					f->next= NULL;
+					head2=f;
+					ptr2=f;
 
+					
 				}
 				start=start->next;
 		}
