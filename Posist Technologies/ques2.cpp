@@ -15,6 +15,7 @@ void display(node *head)
 		cout<<temp->value<<" ";
 		temp=temp->next;
 	}
+	cout<<"\n";
 }
 
 int findinnew(node *newlist , node *prev)
@@ -24,30 +25,39 @@ int findinnew(node *newlist , node *prev)
 	while(temp)
 	{
 		if(temp->value==val)
-			return 1;
-
+			{cout<<"\nFound common "<<val;return 1;}
+		else
 		temp=temp->next;
 	}
 return 0 ;
 }
 
-void insertinnew(node *newlist, node *prev,node *cur)
+void insertinnew(node *newlist, int val,node *cur)
 {
-	node *p = NULL;
-	int val = prev->value;
+	node *p = new node();
 	p->value=val;
 	p->next=NULL;
+
+
 	node *temp = newlist;
+
 	while(temp)
 	{
-			cur = temp;
+			// cur = temp;
 			if(temp->next!=NULL&&temp->value<val&&temp->next->value>val)
 			{
 					node *right = temp->next;
 					temp->next = p;
 					p->next= right;
+					return;
 			}
+			else if(temp->next==NULL)
+			{
+				temp->next=p;
+				cur = p ;
+				return;
 
+			}
 			temp = temp->next;
 	}
 	
@@ -76,33 +86,38 @@ int main()
 				{ptr=p;head=p;}
 
 		}
-    	display(head);
+    	// display(head);
 		
 		node *head2=NULL;
 		node *ptr2=NULL;
-		node *start=head;
-		while(start)
+
+		while(head)
 		{
 				if(head2!=NULL)
 				{
 					if(findinnew(head2,head)==0)
 					{
-						insertinnew(head2,start,ptr2);
+						// cout<<"Unique";
+						 insertinnew(head2,head->value,ptr2);
+						
 
+					}
+					else{
+						// cout<<"Not Unique";
 					}
 				}
 				else
 				{
 					
 					node *f= new node();
-					f->value = start->value;
+					f->value = head->value;
 					f->next= NULL;
 					head2=f;
 					ptr2=f;
 
 					
 				}
-				start=start->next;
+				head = head->next;
 		}
 
 
