@@ -17,7 +17,7 @@ void display(node *head)
 	}
 }
 
-bool findinnew(node *newlist , node *prev)
+int findinnew(node *newlist , node *prev)
 {
 	int val = prev->value;
 	node *temp = newlist;
@@ -80,12 +80,12 @@ int main()
 		
 		node *head2=NULL;
 		node *ptr2=NULL;
-
-		while(head)
+		node *start=head;
+		while(start)
 		{
 				if(head2==NULL)
 				{
-					head2->value=head->value;
+					head2->value=start->value;
 					head2->next=NULL;
 					ptr2=head2;
 				}
@@ -93,12 +93,12 @@ int main()
 				{
 					if(findinnew(head2,head)==0)
 					{
-						insertinnew(head2,head,ptr2);
+						insertinnew(head2,start,ptr2);
 
 					}
 
 				}
-				head=head->next;
+				start=start->next;
 		}
 
 
