@@ -45,6 +45,7 @@ void factorial(int n )
 
 int main()
 {
-	factorial(num);
+
+	factorial(1000);
 	return 0 ;
 }
