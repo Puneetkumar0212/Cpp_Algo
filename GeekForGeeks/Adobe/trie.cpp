@@ -64,12 +64,13 @@ void display(TrieNode *root,char str[], int level)
 bool search(TrieNode *root , string word)
 {
 	TrieNode *temp = root;
-	cout<<"word:"<<word;
+	// cout<<"word:"<<word;
 	int wordLen = word.length();
 	for(int i = 0 ; i < wordLen;i++ )
 	{
-		int index = word[i]-'a';
-		if(!temp->child[i])			//No child exist for given letter 
+		 int index = word[i]-'a';
+		// cout<<(temp->child[index])<<"\n";
+		if(!temp->child[index])			//No child exist for given letter 
 		{
 			return false;
 		}
@@ -98,7 +99,7 @@ int main()
     display(root, str,level);	
 
     //Search Single word in Trie
-    // cout<<search(root,"okay")<<"\n";
+    cout<<search(root,"okay")<<"\n";
     cout<<search(root,"no");
 
 
