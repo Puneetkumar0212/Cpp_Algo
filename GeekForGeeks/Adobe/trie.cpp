@@ -20,8 +20,19 @@ TrieNode* getNode()
 void insert (TrieNode *root , string key )
 {
 	TrieNode *temp = root;
+	int wordSize = key.length();
 
+	for ( int i = 0 ; i < wordSize; i ++)
+	{
+		int index = key[i]-'a';
+		if(!temp->child[index])		//No Child Exists
+		{
+			temp->child[index]=getNode();
+		}
+		temp= temp->child[index];
+	}
 
+temp->is_last=true;
 
 }
 int main()
