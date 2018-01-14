@@ -64,7 +64,8 @@ void display(TrieNode *root,char str[], int level)
 
 int main()
 {
-	string input_chars[] = {"there","the"};
+
+	string input_chars[] = {"there","the","okay","anki"};
 	int size = sizeof(input_chars)/sizeof(input_chars[0]);
 	TrieNode *root = getNode();
 
@@ -73,7 +74,7 @@ int main()
         insert(root, input_chars[i]);
     
 
-    //To Display Trie formed
+    //To Display words in trie
     int level = 0 ;
     char str[20];	//Max 20 words
 
