@@ -61,6 +61,22 @@ void display(TrieNode *root,char str[], int level)
 	}
 }
 
+bool search(TrieNode *root , string word)
+{
+	TrieNode *temp = root;
+	cout<<"word:"<<word;
+	int wordLen = word.length();
+	for(int i = 0 ; i < wordLen;i++ )
+	{
+		int index = word[i]-'a';
+		if(!temp->child[i])			//No child exist for given letter 
+		{
+			return false;
+		}
+		temp = temp->child[index]; //Goto next char
+	}
+	return (temp!=NULL&&temp->is_last);	//Not Null and end of word
+}
 
 int main()
 {
@@ -80,6 +96,11 @@ int main()
 
 
     display(root, str,level);	
+
+    //Search Single word in Trie
+    // cout<<search(root,"okay")<<"\n";
+    cout<<search(root,"no");
+
 
 	return 0 ;
 }
