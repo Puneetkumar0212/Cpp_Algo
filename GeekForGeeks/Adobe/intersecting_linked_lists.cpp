@@ -1,10 +1,53 @@
 #include<iostream>
+#include<cmath>
 using namespace std;
 struct node
 {
 	int val;
 	node *next;
 };
+
+int findlen(node *head)
+{
+	int len = 0 ;
+	node *n = head;
+	while(n!=NULL)
+		{
+			len++;
+			n = n->next;
+		}
+
+
+	return len;	
+}
+
+
+void fun(node *a , node *b)
+{
+	int lena = findlen(a);
+	int lenb = findlen(b);
+	int max = lena>lenb?lena:lenb;
+	int diff = abs(lena-lenb);
+	while(diff--)
+	{
+		a = a->next;
+		b = b->next;
+	}
+	max = max-diff;
+	while(max--)
+	{
+		if(a==b)
+			{	
+				cout<<"They intersect at"<<a->val;
+				return;
+			}	
+	}
+cout<<"They do not intersect";
+return;
+
+}
+
+
 
 int main()
 {
@@ -52,9 +95,10 @@ int main()
 		head2=head2->next;
 
 		head1->next=NULL;
-		head2->next=NULL:
+		head2->next=NULL;
 
-		
+		fun(start1,start2);
+
 
 
 
