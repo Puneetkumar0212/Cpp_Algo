@@ -24,27 +24,40 @@ int findlen(node *head)
 
 void fun(node *a , node *b)
 {
+
 	int lena = findlen(a);
 	int lenb = findlen(b);
-	int max = lena>lenb?lena:lenb;
+	int max = (lena>lenb)?lena:lenb;
 	int diff = abs(lena-lenb);
-	while(diff--)
-	{
-		a = a->next;
-		b = b->next;
-	}
-	max = max-diff;
-	while(max--)
+	int d =diff;
+	// cout<<diff<<"\n";
+	if(lena>lenb)
+		while(diff--)
+		{
+			
+			a = a->next;
+			
+		}
+	else
+		while(diff--)
+		{
+			
+			b = b->next;
+			
+		}
+	// max -= d;
+	// cout<<a->val<<"\n"<<b->val;
+	while(a!=NULL && b!=NULL && max--)
 	{
 		if(a==b)
 			{	
-				cout<<"They intersect at"<<a->val;
+				cout<<"\nThey intersect at "<<a->val<<endl;
 				return;
 			}
 		a=a->next;
 		b=b->next;		
 	}
-cout<<"They do not intersect";
+cout<<"\nThey do not intersect\n";
 return;
 
 }
