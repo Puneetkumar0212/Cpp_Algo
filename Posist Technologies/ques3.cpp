@@ -11,10 +11,5 @@ int main()
 	for(int i = 0 ; i<n ;i++ )
 		cin>>s[i];
 
-	if(n%2==0)
-		cout<<s[n-1];
-	else 
-	{
-		
-	}
+	
 }

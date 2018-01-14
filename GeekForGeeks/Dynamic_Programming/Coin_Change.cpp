@@ -18,7 +18,7 @@ int cc(int S[],int n ,int k )
     //         for(int h = 0 ; h < k+1;h++)
     //         	cout<<table[h]<<"\t";
            
-		 	// }
+		 	}
     return table[k];
 
 }
