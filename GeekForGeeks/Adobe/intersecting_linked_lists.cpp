@@ -40,7 +40,9 @@ void fun(node *a , node *b)
 			{	
 				cout<<"They intersect at"<<a->val;
 				return;
-			}	
+			}
+		a=a->next;
+		b=b->next;		
 	}
 cout<<"They do not intersect";
 return;
