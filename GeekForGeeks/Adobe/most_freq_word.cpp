@@ -6,6 +6,7 @@ struct TrieNode
 	struct TrieNode *child[26];
 	bool is_last;
 	int count;
+	string char_till_now;
 	
 };
 
@@ -14,6 +15,7 @@ TrieNode* getNode()
 	TrieNode *r = new TrieNode;
 	r->is_last=false;
 	r->count=0;
+	r->char_till_now="";
 	for ( int i = 0 ; i < 26 ; i ++)
 		r->child[i]=NULL;
 	return r;
@@ -24,6 +26,7 @@ void insert (TrieNode *root , string key )
 {
 	TrieNode *temp = root;
 	int wordSize = key.length();
+	string temp_text="";
 
 	for ( int i = 0 ; i < wordSize; i ++)
 	{
@@ -32,13 +35,16 @@ void insert (TrieNode *root , string key )
 		{
 			temp->child[index]=getNode();
 		}
+		temp_text = temp_text + key[i];
 		temp= temp->child[index];
 	}
 
 temp->is_last=true;
-temp->count=temp->count+1;
+temp->count++;
+temp->char_till_now = temp_text;
 
 }
+
 
 bool find(TrieNode*  temp, int& maxcnt, string& key)
 {
@@ -51,12 +57,15 @@ bool find(TrieNode*  temp, int& maxcnt, string& key)
 
     	if(temp->child[i]->count>maxcnt)
     	{
-    		key=i +'a';
+    		// char add= i+'a';
+    		// key = key+add;
+    		key = temp->child[i]->char_till_now;
     		maxcnt = temp->child[i]->count;
     	}
     	    find(temp->child[i],maxcnt,key);
 
     }
+
 }
 
 
@@ -64,7 +73,7 @@ bool find(TrieNode*  temp, int& maxcnt, string& key)
 int main()
 {
 
-	string input_chars[] = {"there","the","okay","anki"};
+	string input_chars[] = {"there","the","the","anki","the"};
 	int size = sizeof(input_chars)/sizeof(input_chars[0]);
 	TrieNode *root = getNode();
 
