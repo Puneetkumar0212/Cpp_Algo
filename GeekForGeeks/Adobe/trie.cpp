@@ -19,6 +19,9 @@ TrieNode* getNode()
 
 void insert (TrieNode *root , string key )
 {
+	TrieNode *temp = root;
+
+
 
 }
 int main()
@@ -27,7 +30,7 @@ int main()
 	int size = sizeof(input_chars)/sizeof(input_chars[0]);
 	TrieNode *root = getNode();
 
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < size; i++)
         insert(root, input_chars[i]);
 
 
