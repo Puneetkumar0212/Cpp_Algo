@@ -40,7 +40,7 @@ bool IsLeafNode (TrieNode *node)
 {
 	return node->is_last!=false;		//is last node -> returns true
 }
-bool isItFreeNode(trie_node_t *pNode)
+bool isItFreeNode(TrieNode *pNode)
 {
     
     for(int i = 0; i < 26; i++)
@@ -52,9 +52,9 @@ bool isItFreeNode(trie_node_t *pNode)
     return true;
 }
 
-int leafNode(trie_node_t *pNode)
+int leafNode(TrieNode *pNode)
 {
-    return (pNode->value != 0);
+    return (pNode->is_last != false);
 }
 bool del(TrieNode *root , string str , int level , int length)
 {
@@ -78,7 +78,7 @@ bool del(TrieNode *root , string str , int level , int length)
 			int index = ((int)str[level] - (int)'a');
 			if(del(root->child[index],str,level+1,length))
 			{
-				free(root->child[index]);
+				delete(root->child[index]);
 				root->child[index] = NULL;
 				return(!leafNode(root)&&isItFreeNode(root));
 
