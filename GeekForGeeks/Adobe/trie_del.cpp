@@ -97,7 +97,25 @@ void del_trie (TrieNode *root , string str)
 	}
 }
 
+void display(TrieNode *root,char str[], int level)
+{
+	//Add null incase last node (EOS)
+	if(IsLeafNode(root))
+	{
+		str[level]='\0';
+		cout<<str<<"\n";
+	}
+	
+	for (int i = 0 ; i < 26 ; i ++)
+	{
+		if(root->child[i])		//if child exists 
+		{
+			str[level]= i+'a';
+			display(root->child[i],str,level+1);//Recursively call display till EOS
 
+		}
+	}
+}
 int main()
 {
 
@@ -108,11 +126,20 @@ int main()
 	//Insert All words 	
 	for (int i = 0; i < size; i++)
         insert(root, input_chars[i]);
-    
+       
+
+    int level = 0 ;
+    char strt[20];	//Max 20 words
+
+
+    display(root, strt,level);	
+
+	cout<<"**********************\n";
+
     //Delete given string 
     string str = "the";
     del_trie(root,str);
-
+  display(root, strt,level);
 
 	return 0 ;
 }
