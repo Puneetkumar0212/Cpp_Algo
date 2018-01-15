@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 
+//When only single digits are saved !
 
 
 
