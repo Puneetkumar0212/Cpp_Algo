@@ -62,7 +62,7 @@ bool find(TrieNode*  temp, int maxcnt, string& key)
 
     		key = temp->child[i]->char_till_now;
     		maxcnt = temp->child[i]->count;
-    		 cout<<key;
+    		 cout<<key<<"\t";
     	}
     	    find(temp->child[i],maxcnt,key);
 
@@ -75,7 +75,7 @@ bool find(TrieNode*  temp, int maxcnt, string& key)
 int main()
 {
 
-	string input_chars[] = {"there","the","the","anki","the"};
+	string input_chars[] = {"there","the","the","anki","the","anki"};
 	int size = sizeof(input_chars)/sizeof(input_chars[0]);
 	TrieNode *root = getNode();
 
@@ -83,11 +83,11 @@ int main()
 	for (int i = 0; i < size; i++)
         insert(root, input_chars[i]);
     
-    //FIND MAX FREQ WORD
-    int c=2;
+    //FIND >=FREQ word
+    int c=2;		//taking freq =2
    	string w;
    	find(root,c,w);
-   	cout<<c<<w;
+   	//cout<<c<<w;
 
 	return 0 ;
 }
