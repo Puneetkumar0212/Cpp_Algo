@@ -139,7 +139,20 @@ int main()
     //Delete given string 
     string str = "the";
     del_trie(root,str);
-  display(root, strt,level);
+  	display(root, strt,level);
+
+  	cout<<"**********************\n";
+
+    //Delete given string 
+    str = "okay";
+    del_trie(root,str);
+  	display(root, strt,level);
+  	cout<<"**********************\n";
+
+    //Delete given string 
+    str = "blah";
+    del_trie(root,str);
+	display(root, strt,level);
 
 	return 0 ;
 }
