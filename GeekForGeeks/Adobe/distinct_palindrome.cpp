@@ -43,17 +43,28 @@ bool checkpalindrome(string s)
 	else 
 		return false;
 }
-
+string subString(string s, int n) 
+{
+    // Pick starting point in outer loop
+    // and lengths of different strings for
+    // a given starting point
+    
+}
 
 
 void find(string str)
 {
-	if(checkpalindrome(str)==true)
-	{
-		cout<<str;
-	}
-	else
-		cout<<"";
+	int n = str.length();
+
+	for (int i = 0; i < n; i++) 
+        for (int len = 1; len <= n - i; len++)
+            	{
+            		string sub = str.substr(i, len);
+            		if(checkpalindrome(sub))
+            		{
+            			cout<<sub<<" ";
+            		} 	
+            	}
 }
 
 int main()
