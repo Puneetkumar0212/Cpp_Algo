@@ -9,9 +9,11 @@ using namespace std;
 
 int basetodecimal(char i)
 {
+	//cout<<(int)(i)-47<<"\t";
 	if(i>='0'&&i<='9')
 	{
-		return i;
+		int ia = i - '0';
+		return ia;
 	}
 	else 
 	{
@@ -61,6 +63,8 @@ int todecimal(string a , int base)
 void convert(string a , int i , int o)
 {
 	int dec = todecimal(a,i);
+	cout<<"Decimal : "<<dec;
+	cout<<"\n";
 	cout<<tobase(dec,o);
 
 }
